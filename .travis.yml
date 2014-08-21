@@ -1,0 +1,32 @@
+language: python
+python:
+  - "2.7"
+
+virtualenv:
+    system_site_packages: true
+
+# whitelist
+branches:
+  only:
+    - dev
+
+before_install:
+    - echo "before_install"
+    - echo $VIRTUAL_ENV
+    - df -h
+    - date
+    - pwd
+    - uname -a
+    - python -V
+
+    # Xvfb stuff for clipboard functionality; see the travis-ci documentation
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+
+    - sudo apt-get update -qq
+    - sudo apt-get install -qq python-lxml
+    - sudo apt-get install -qq python-sqlalchemy
+    - sudo apt-get install -qq python-bottle
+
+script:
+    - bash ./install.sh
