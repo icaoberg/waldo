@@ -32,5 +32,4 @@ before_install:
     - sudo apt-get install -qq python-sqlalchemy
     - sudo apt-get install -qq python-bottle
 
-script:
-    - travis_wait bash ./install.sh
+script: travis_wait bash ./install.sh
