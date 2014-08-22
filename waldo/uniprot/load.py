@@ -79,9 +79,18 @@ def load(datadir, create_session=None, organism_set=set([u'Mus musculus', u'Homo
     from waldo.backend import call_create_session
 
     session = call_create_session(create_session)
+
+    '''
+    @icaoberg this pretty print was added to prevent automated CI systems, like Travis from
+    timing out since the loading of Uniprot can take over 10 minutes
+    '''
     loaded = _load_uniprot_sprot(datadir, session, organism_set)
+    print "Number of loaded entries:" + str(loaded)
     loaded += _load_idmapping(datadir, session, organism_set)
+    print "Number of loaded entries:" + str(loaded)
     loaded += _load_sec_ac(datadir, session)
+    print "Number of loaded entries:" + str(loaded)
+    
     return loaded
 
 def _cleanup(element):
