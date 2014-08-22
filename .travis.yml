@@ -33,4 +33,4 @@ before_install:
     - sudo apt-get install -qq python-bottle
 
 script:
-    - bash ./install.sh
+    - travis_wait bash ./install.sh
