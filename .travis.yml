@@ -4,7 +4,7 @@ python:
 
 env:
   global:
-    - TIMEOUT=1000
+    - TIMEOUT=5000
 
 virtualenv:
     system_site_packages: true
